@@ -1,0 +1,187 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+
+<style>
+      body {
+    font: 14px "Trebuchet MS", Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+  #welcome {
+    width: 100%;
+    height: 100%;
+    background-image: url(<%= asset_path "welcome.jpg" %>);
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url(<%= asset_path "dark11.png"%>);
+    width: 100%;
+    height: 100%;
+  }
+  #topbar {
+    background-color: #fff;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    padding: 0;
+    height: 50px;
+    width: 100%;
+  }
+  #topbar #login {
+    cursor: pointer;
+    float: right;
+    margin-right: 100px;
+  }
+  #left {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    margin-left: -400px;
+  }
+  #left input {
+    width: 300px;
+  }
+  #left button {
+    width: 300px;
+  }
+  #left hr {
+    width: 300px;
+  }
+  #left #fblogin {
+    background-color: #00f;
+    color: #fff;
+  }  
+  #left #twitterlogin {
+  	width: 300px;
+    background-color: lightblue;
+    color: #fff;
+  }
+  #right {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: 100px;
+    width: 300px;
+  }
+  #right #explore {
+    width: 300px;
+  }
+  #signinOverlay {
+    z-index: 99;
+    background: #fff;
+    opacity: 0.8;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  #signinPopUp {
+    background: #808080;
+    width: 320px;
+    padding: 10px;
+    height: 200px;
+    z-index: 100;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -100px;
+  }
+  #signinPopUp input,
+  #signinPopUp button {
+    margin-top: 20px;
+    width: 300px;
+  }
+  #signinPopUp .close {
+    cursor: pointer;
+    float: right;
+  }
+
+  .hidden {
+      display: none;
+  }
+
+</style>
+
+<body>
+    <section id="content" >
+    <div id="welcome"></div>
+    <div id="overlay"></div>
+    <div id="topbar"> 
+        <img id="logo" />
+        <% if user_signed_in? %>
+          <h4 id="login"> <%= link_to("Logout", destroy_user_session_path, :method => :delete) %> </h4>
+        <% else %>
+          <h4 id="login" >
+            SIGN IN
+          </h4>
+        <% end %>
+    </div>
+
+    <div id="left">
+        <button id="fblogin">
+            FACEBOOK SIGN UP
+        </button>
+        <%= link_to "Twitter Sign Up", user_omniauth_authorize_path(:twitter), :id => "twitterlogin" %>
+        <hr />
+        <%= form_for(resource, :name => 'signUpForm', :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	  		<%= devise_error_messages! %>
+
+	  		<div>
+	  			<%= f.text_field :name, :placeholder => 'Name', :autofocus => true %>
+	  		</div>
+	  		<div>
+	  			<%= f.email_field :email, :placeholder => 'Email' %>
+	  		</div>
+
+	  		<div>
+	  			<%= f.password_field :password, :placeholder => 'Password'%>
+	  		</div>
+	  		<div>
+	  			<%= f.password_field :password_confirmation, :placeholder => 'Password Confirmation' %>
+	  		</div>
+
+	  		<div><%= f.submit "Sign up" %></div>
+		<% end %>
+    </div>
+    <div id="right">
+        <button id="explore">
+            <h2><%= link_to 'EXPLORE', closet_index_path, :style => "text-decoration:none;" %></h2>
+        </button>
+    </div>
+
+    <div id="signinOverlay" class="hidden" ></div>
+
+    <div id="signinPopUp"  class="hidden" >
+        <span class="close" >X</span>
+        <form name="signInForm">
+            <input name="email" required type="email" placeholder="email"  />
+            <input  name="password" required  type="password" placeholder="password" />
+            <button >SIGN IN</button>
+        </form>
+    </div>
+    </section>  
+</body>
