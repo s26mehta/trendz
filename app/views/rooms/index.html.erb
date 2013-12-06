@@ -1,39 +1,28 @@
-<!DOCTYPE html>
+
 <html>
-<head>
-  <title>Trending</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <style>
-body {
+  <head>
+    <title>  My room | Trendz </title>
+
+    <style>
+    body {
       font: 20px "Trebuchet MS", Helvetica, sans-serif;
       padding: 0;
       margin: 0;
     }
-    button a, button a:visited, button a:focus, button a:active {
-        text-decoration: none;
-        color: white;
-    }
-    button a:hover, button:hover a{
-        text-decoration: none;
-        color: black;
-        background-color: white;
-    }
     button {
+        background: #BDB9BC;
         outline: none;
-        border: none;
-        background: #7e8631;
-        height: 78px;
-        padding: 0px 20px;
-        margin: 0px;
         cursor: pointer;
-        float: right;
-        color: white;
+        padding: 0;
+        border: none;
+        margin: 5px 0px;
+        height: 50px;
     }
     button:hover {
-        background: white;
-        color: black;
+        background-color: white;
+    }
+    button:active {
+        background-color: #BDB9BC;
     }
     input {
         outline: #BDB9BC solid thin;
@@ -47,7 +36,7 @@ body {
     #welcome {
       width: 100%;
       height: 100%;
-      background-image: url("welcome.jpg");
+      background-image: url("<%= asset_path "welcome.jpg" %>");
       background-size: cover;
       position: fixed;
       top: 0;
@@ -57,7 +46,7 @@ body {
       position: fixed;
       top: 0;
       left: 0;
-      background-image: url("dark11.png");
+      background-image: url("<%= asset_path "dark11.png"%>");
       width: 100%;
       height: 100%;
     }
@@ -122,7 +111,7 @@ body {
         margin-left: -500px;
     }
     #header {
-        background-image: url("closet.jpg");
+        background-image: url("<%= asset_path "closet.jpg" %>");
         position: absolute;
         top: 0px;
         width: 100%;
@@ -139,9 +128,9 @@ body {
         border: 1px grey solid;
     }
     #profPicCont img {
-        width: 90px;
-        auto: 90px;
-        margin: 5px;   
+       
+        margin: 5px;
+        height:90px;   
     }
     #header .desc {
         color: #7e8631;
@@ -150,35 +139,68 @@ body {
         left: 190px;
         -webkit-text-stroke: 0px black;
     }
-    #logo {
-        float: left;
-        height: 78px;
+    .table {
+        text-align: center;
+        background: white;
+        position: absolute;
+        top: 200px;
+        width: 100%;
     }
-  </style>
-</head>
-<body>
+    .post {
+        width: 300px;
+        margin: 20px 10px 0px 10px;
+        cursor: pointer;
+    }
+    </style>
+    
+    
+	</head>
+   <body>
+   	<section id="content" >
+        <div id="overlay"></div>
         <div id="topbar"> 
             <header>
-                <a href="/"><%= image_tag("logo.png", :id => 'logo') %></a>
+               <%= image_tag("logo.png", :id => 'logo') %>
                 <button id="login" >
                     <h3> Log Out</h3>
                 </button>
                 <button id="login" >
                     <h3> Profile</h3>
                 </button>
-                <button>
+                <button id="af" >
                     <h3> <%= link_to 'My room', room_index_path, :id => 'af', :style => 'text-decoration:none, color:black'%> </h3>
                 </button>
-                <button  >
+                <button id="af" >
                     <h3> <%= link_to 'Explore', closet_index_path, :id => 'af', :style => 'text-decoration:none, color:black'%> </h3>
                 </button>
-                <button  >
+                <button id="af" >
                     <h3><%= link_to 'Now Trending', closet_index_path, :id => 'af', :style => 'text-decoration:none, color:black' %></h3>
                 </button>
             </header>
          </div>
 
-<%= yield %>
+        <div class="myroom">
+            <div id="header">
+                <div class="contOver"></div>
+                <div id="profPicCont">
+                    <%= image_tag("prof.jpg") %>
+                </div>
+                <div class="desc">
+                    <h1> Melanie's closet </h1>
+                    <span> #hipster #books #beer #plaid</span>
+                </div>
+            </div>
+            <div class="table">
+            	<%= image_tag('add.png', :class => 'post newPost') %>
+            	<%= image_tag('friends9.jpg', :class => 'post', :style => "height:450px") %>
+            	<%= image_tag('friend8.jpg', :class => 'post') %>
+            	<%= image_tag('friend2.jpg', :class => 'post' )%>
+            	<%= image_tag('friends10.jpg', :class => 'post') %>
+            	<%= image_tag('friend113.jpg', :class => 'post', :style => "height:400px") %>
+            </table>
 
+        </div>
+      
+    </section>	
 </body>
 </html>

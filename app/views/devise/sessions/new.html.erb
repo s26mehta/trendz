@@ -1,4 +1,57 @@
-<h2>Sign in</h2>
+<style>
+  	#topbar {
+      background-color: #7e8631;
+      margin: 0;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      padding: 0;
+      height: 78px;
+      width: 100%;
+    }
+    header {
+        position: absolute;
+        left: 50%;
+        top: 0%;
+        height: 50px;
+        width: 1000px;
+        margin-left: -500px;
+    }
+    header button {
+      background: #7e8631;
+      height: 78px;
+      padding: 0px 20px;
+      margin: 0px;
+      cursor: pointer;
+      float: right;
+    }
+    header button:hover {
+        background: #fff  ;
+    }
+  </style>
+
+<div id="topbar"> 
+            <header>
+                <img id="logo" />
+                <button id="login" >
+                    <h3> Log Out</h3>
+                </button>
+                <button id="login" >
+                    <h3> Profile</h3>
+                </button>
+                <button id="af" >
+                    <h3> My room </h3>
+                </button>
+                <button id="af" >
+                    <h3> Explore </h3>
+                </button>
+                <button id="af" >
+                    <h3> Now Trending </h3>
+                </button>
+            </header>
+         </div>
+
+         <br><br><br><br><br>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />

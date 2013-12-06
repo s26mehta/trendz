@@ -1,2 +1,45 @@
-<h1>Closet#corporate</h1>
-<p>Find me in app/views/closet/corporate.html.erb</p>
+<body>
+	<div class="data">
+		<br><h1 class="title">Newest trends from your social circle</h1>
+		<div class="title">
+			<%= link_to 'View trends around the world', closet_index_path %>
+		</div>
+		<div>
+			<%= image_tag('friend1.jpg', :width => '100%', :class => "post") %>
+			<%= image_tag('friend2.jpg', :width => '100%', :class => "post")%>
+			<%= image_tag('friend3.jpg', :width => '100%', :class => "post")%>
+			<%= image_tag('friend4.jpg', :width => '100%', :class => "post")%>
+			<%= image_tag('friend5.jpg' , :width => '100%', :class => "post")%>
+			<%= image_tag('friend6.jpg', :width => '100%', :class => "post")%>
+	</div>
+	<div>
+
+</body>
+
+
+
+<style>
+      body {
+    font: 14px "Trebuchet MS", Helvetica, sans-serif;
+    padding-top: 50px;
+    margin: 0;
+    background-image: url("<%= asset_path "dark11.png" %>");
+  }
+  .data{
+        text-align: center;
+        background: white;
+        position: absolute;
+        top: 78px;
+        width: 1000px;
+        left: 50%;
+        margin-left: -500px;
+    }
+
+  	.post {
+        width: 300px;
+        margin: 20px 10px 0px 10px;
+        cursor: pointer;
+    }
+   .title{margin-left: 70px;}
+
+</style>

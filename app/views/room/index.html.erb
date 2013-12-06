@@ -1,35 +1,22 @@
-<!DOCTYPE html>
+
 <html>
-<head>
-  <title>Trending</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <style>
-body {
+  <head>
+    <title>  My room | Trendz </title>
+
+    <style>
+    body {
       font: 20px "Trebuchet MS", Helvetica, sans-serif;
       padding: 0;
       margin: 0;
     }
-    button a, button a:visited, button a:focus, button a:active {
-        text-decoration: none;
-        color: white;
-    }
-    button a:hover, button:hover a{
-        text-decoration: none;
-        color: black;
-        background-color: white;
-    }
     button {
-        outline: none;
-        border: none;
-        background: #7e8631;
-        height: 78px;
-        padding: 0px 20px;
-        margin: 0px;
-        cursor: pointer;
-        float: right;
-        color: white;
+      background: #7e8631;
+      height: 78px;
+      padding: 0px 20px;
+      margin: 0px;
+      cursor: pointer;
+      float: right;
+      color: white;
     }
     button:hover {
         background: white;
@@ -47,7 +34,7 @@ body {
     #welcome {
       width: 100%;
       height: 100%;
-      background-image: url("welcome.jpg");
+      background-image: url(<%= asset_path "welcome.jpg" %>);
       background-size: cover;
       position: fixed;
       top: 0;
@@ -57,15 +44,15 @@ body {
       position: fixed;
       top: 0;
       left: 0;
-      background-image: url("dark11.png");
+      background-image: url(<%= asset_path "dark11.png"%>);
       width: 100%;
       height: 100%;
     }
     #topbar {
       background-color: #7e8631;
       margin: 0;
-      position: fixed;
       z-index: 100;
+      position: fixed;
       top: 0;
       padding: 0;
       height: 78px;
@@ -106,7 +93,7 @@ body {
         width: 100%;
         height: 100%;
         background: white;
-        opacity: 0.8;
+        opacity: 0.75;
     }
 
     .hidden {
@@ -115,20 +102,20 @@ body {
     
     .myroom {
         background: #fff;
-        position: absolute;
+        position: fixed;
         left: 50%;
         top: 78px;
+        height: 763px;
         width: 1000px;
         margin-left: -500px;
     }
-    #header {
-        background-image: url("closet.jpg");
+    
+    .myroom img {
         position: absolute;
-        top: 0px;
-        width: 100%;
-        left: 0px;
-        height: 200px;
+        bottom: 0;
+        width: 1000px;
     }
+    
     #profPicCont {
         background: #7e8631;
         position: absolute;
@@ -137,48 +124,73 @@ body {
         width: 100px;
         height: 100px;
         border: 1px grey solid;
+        
     }
     #profPicCont img {
         width: 90px;
         auto: 90px;
         margin: 5px;   
     }
-    #header .desc {
+    .myroom .desc {
         color: #7e8631;
         position: absolute;
         top: 17px;
         left: 190px;
         -webkit-text-stroke: 0px black;
     }
-    #logo {
+        #logo {
         float: left;
         height: 78px;
     }
-  </style>
-</head>
-<body>
+
+
+    </style>
+    
+    
+	</head>
+   <body>
+   	<section id="content" >
+        <div id="overlay"></div>
         <div id="topbar"> 
             <header>
-                <a href="/"><%= image_tag("logo.png", :id => 'logo') %></a>
+                <%= image_tag("logo.png", :id => 'logo') %>
                 <button id="login" >
                     <h3> Log Out</h3>
                 </button>
                 <button id="login" >
                     <h3> Profile</h3>
                 </button>
-                <button>
-                    <h3> <%= link_to 'My room', room_index_path, :id => 'af', :style => 'text-decoration:none, color:black'%> </h3>
+                <button id="af" >
+                    <h3> <%= link_to 'My room', rooms_index_path, :id => 'af', :style => 'text-decoration:none, color:black'%> </h3>
                 </button>
-                <button  >
+                <button id="af" >
                     <h3> <%= link_to 'Explore', closet_index_path, :id => 'af', :style => 'text-decoration:none, color:black'%> </h3>
                 </button>
-                <button  >
+                <button id="af" >
                     <h3><%= link_to 'Now Trending', closet_index_path, :id => 'af', :style => 'text-decoration:none, color:black' %></h3>
                 </button>
             </header>
          </div>
 
-<%= yield %>
+            <div class="myroom">
+                <%= image_tag('myroom1.jpg', :usemap => '#roommap')%>
 
+                <map name="roommap">
+                  <area shape="closet" coords="150,200,320,250" alt="My closet" href="/rooms/index">
+                  <!--area shape="shelf" coords="0,0,200,50" alt="My shelf" href="_self">
+                  <area shape="desk" coords="0,0,200,50" alt="My desk" href="_self">
+                  <area shape="decor" coords="0,0,200,50" alt="My decor" href="_self"-->
+                </map>
+                <div id="profPicCont">
+                    <%= image_tag('prof.jpg') %>
+                </div>
+                <div class="desc">
+                    <h1> Frankie's room </h1>
+                    <span> #hipster #books #beer #plaid</span>
+                </div>
+
+            </div>
+      
+    </section>	
 </body>
 </html>

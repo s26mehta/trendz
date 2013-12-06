@@ -1,4 +1,8 @@
 Trending::Application.routes.draw do
+  get "rooms/index"
+
+  get "room/index"
+
   get "closet/index"
 
   get "closet/corporate"

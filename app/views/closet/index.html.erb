@@ -1,62 +1,25 @@
 <body>
 	<div class="data">
-		<h1 class="title">Newest trends all over the world</h1>
-		<table class="table">
-		  <tr>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress1.jpg', :width => '100%') %><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress2.jpg', :width => '100%')%><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress3.jpg', :width => '100%')%><div>
-		  	</td>
-		  </tr>
-		  <tr>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress14.jpg', :width => '100%')%><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress5.jpg' , :width => '100%')%><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress6.jpg', :width => '100%')%><div>
-		  	</td>
-		  </tr>
-		  <tr>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress7.jpg', :width => '100%')%><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress8.jpg', :width => '100%')%><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress9.jpg', :width => '100%')%><div>
-		  	</td>
-		  </tr>
-		  <tr>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress10.jpg', :width => '100%')%><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress11.jpg', :width => '100%')%><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress12.jpg', :width => '100%')%><div>
-		  	</td>
-		  </tr>
-		  <tr>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress13.jpg', :width => '100%')%><div>
-		  	</td>
-		  	<td>
-		  		<div class="box"><%= image_tag('dress4.jpg', :width => '100%')%><div>
-		  	</td>
-		  </tr>
-
-
-		</table>
+		<br><h1 class="title">Newest trends all over the world</h1>
+		<div class="title">
+			<%= link_to 'Filter by your social circle', closet_corporate_path %>
+		</div>
+		<div>
+		  		<%= image_tag('dress1.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress2.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress3.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress14.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress5.jpg' , :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress6.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress7.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress8.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress9.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress10.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress11.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('friend1.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('dress13.jpg', :width => '100%', :class => "post")%>
+		  		<%= image_tag('friend4.jpg', :width => '100%', :class => "post")%>
+		  </div>
 	</div>
 
 </body>
@@ -68,19 +31,52 @@
     font: 14px "Trebuchet MS", Helvetica, sans-serif;
     padding-top: 50px;
     margin: 0;
-    background-color: lightgreen;
+    background-image: url("<%= asset_path "dark11.png" %>");
   }
-  .data{max-width: 1349px;
-  		margin: auto;}
-  .box{height:250px;
-  		width:300px;
-  		border:1px solid black;
-  		display:inline-block;
-  		overflow: hidden;
-  		margin-right: 70px;
-  		margin-top: 60px;
-   }
-   .box:first-child {margin-left:70px;}
+  .data{
+        text-align: center;
+        background: white;
+        position: absolute;
+        top: 78px;
+        width: 1000px;
+        left: 50%;
+        margin-left: -500px;
+    }
+
+  	.post {
+        width: 300px;
+        margin: 20px 10px 0px 10px;
+        cursor: pointer;
+    }
    .title{margin-left: 70px;}
+   #topbar {
+      background-color: #7e8631;
+      margin: 0;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      padding: 0;
+      height: 78px;
+      width: 100%;
+    }
+    header {
+        position: absolute;
+        left: 50%;
+        top: 0%;
+        height: 50px;
+        width: 1000px;
+        margin-left: -500px;
+    }
+    header button {
+      background: #7e8631;
+      height: 78px;
+      padding: 0px 20px;
+      margin: 0px;
+      cursor: pointer;
+      float: right;
+    }
+    header button:hover {
+        background: #fff  ;
+    }
 
 </style>
